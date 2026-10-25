@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: windline-api
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: WINDLINE_DEMO_MODE
+        value: "false"
+      - key: WINDLINE_ALLOW_DEMO_FALLBACK
+        value: "true"
+      - key: WINDLINE_CACHE_TTL_SECONDS
+        value: "900"
+      - key: WINDLINE_CORS_ORIGINS
+        value: "http://localhost:5173,http://localhost:8080"
